@@ -1,0 +1,39 @@
+{
+  "name": "Niveau",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libelle",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "salle",
+      "otherEntityRelationshipName": "niveau",
+      "relationshipName": "salle"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "enseignant",
+      "otherEntityRelationshipName": "niveau",
+      "relationshipName": "enseignant",
+      "ownerSide": false
+    }
+  ],
+  "javadoc": "not an ignored comment",
+  "entityTableName": "niveau",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220106123114"
+}

@@ -58,13 +58,13 @@ module.exports = async (config, options, targetOptions) => {
             },
           },
           /*
-          ghostMode: { // uncomment this part to disable BrowserSync ghostMode; https://github.com/jhipster/generator-jhipster/issues/11116
-            clicks: false,
-            location: false,
-            forms: false,
-            scroll: false,
-          },
-          */
+                ghostMode: { // uncomment this part to disable BrowserSync ghostMode; https://github.com/jhipster/generator-jhipster/issues/11116
+                  clicks: false,
+                  location: false,
+                  forms: false,
+                  scroll: false,
+                },
+                */
         },
         {
           reload: targetOptions.target === 'build', // enabled for build --watch

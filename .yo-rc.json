@@ -42,7 +42,9 @@
     "clientTheme": "none",
     "clientThemeVariant": "",
     "reactive": false,
-    "enableGradleEnterprise": false
+    "enableGradleEnterprise": false,
+    "entities": ["Eleve", "Tuteurs", "Salle", "Niveau", "Inscription", "Absence", "Enseignant"],
+    "lastLiquibaseTimestamp": 1641472277000
   },
   "git-provider": "GitHub",
   "git-company": "ourymonene20",

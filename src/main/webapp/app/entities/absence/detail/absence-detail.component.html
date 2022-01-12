@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="absence">
+      <h2 data-cy="absenceDetailsHeading"><span jhiTranslate="myschoolApp.absence.detail.title">Absence</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ absence.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.absence.dateAbsence">Date Absence</span></dt>
+        <dd>
+          <span>{{ absence.dateAbsence | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.absence.eleve">Eleve</span></dt>
+        <dd>
+          <div *ngIf="absence.eleve">
+            <a [routerLink]="['/eleve', absence.eleve?.id, 'view']">{{ absence.eleve?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/absence', absence.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

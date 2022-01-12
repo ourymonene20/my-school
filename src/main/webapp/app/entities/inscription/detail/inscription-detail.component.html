@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="inscription">
+      <h2 data-cy="inscriptionDetailsHeading"><span jhiTranslate="myschoolApp.inscription.detail.title">Inscription</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ inscription.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.inscription.dateInscprion">Date Inscprion</span></dt>
+        <dd>
+          <span>{{ inscription.dateInscprion | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.inscription.anneeScolaire">Annee Scolaire</span></dt>
+        <dd>
+          <span>{{ inscription.anneeScolaire | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.inscription.eleve">Eleve</span></dt>
+        <dd>
+          <div *ngIf="inscription.eleve">
+            <a [routerLink]="['/eleve', inscription.eleve?.id, 'view']">{{ inscription.eleve?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.inscription.niveau">Niveau</span></dt>
+        <dd>
+          <div *ngIf="inscription.niveau">
+            <a [routerLink]="['/niveau', inscription.niveau?.id, 'view']">{{ inscription.niveau?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/inscription', inscription.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

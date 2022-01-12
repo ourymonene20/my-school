@@ -1,0 +1,104 @@
+<div>
+  <h2 id="page-heading" data-cy="EleveHeading">
+    <span jhiTranslate="myschoolApp.eleve.home.title">Eleves</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="myschoolApp.eleve.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-eleve"
+        [routerLink]="['/eleve/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="myschoolApp.eleve.home.createLabel"> Create a new Eleve </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="eleves?.length === 0">
+    <span jhiTranslate="myschoolApp.eleve.home.notFound">No eleves found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="eleves && eleves.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nom"><span jhiTranslate="myschoolApp.eleve.nom">Nom</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="prenom">
+            <span jhiTranslate="myschoolApp.eleve.prenom">Prenom</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="email"><span jhiTranslate="myschoolApp.eleve.email">Email</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateNaiss">
+            <span jhiTranslate="myschoolApp.eleve.dateNaiss">Date Naiss</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tuteur.id">
+            <span jhiTranslate="myschoolApp.eleve.tuteur">Tuteur</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let eleve of eleves; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/eleve', eleve.id, 'view']">{{ eleve.id }}</a>
+          </td>
+          <td>{{ eleve.nom }}</td>
+          <td>{{ eleve.prenom }}</td>
+          <td>{{ eleve.email }}</td>
+          <td>{{ eleve.dateNaiss | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="eleve.tuteur">
+              <a [routerLink]="['/tuteurs', eleve.tuteur?.id, 'view']">{{ eleve.tuteur?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/eleve', eleve.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/eleve', eleve.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(eleve)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="eleves && eleves.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

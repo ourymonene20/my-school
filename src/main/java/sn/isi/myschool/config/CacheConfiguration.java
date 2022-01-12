@@ -50,6 +50,17 @@ public class CacheConfiguration {
             createCache(cm, sn.isi.myschool.domain.User.class.getName() + ".authorities");
             createCache(cm, sn.isi.myschool.domain.PersistentToken.class.getName());
             createCache(cm, sn.isi.myschool.domain.User.class.getName() + ".persistentTokens");
+            createCache(cm, sn.isi.myschool.domain.Eleve.class.getName());
+            createCache(cm, sn.isi.myschool.domain.Tuteurs.class.getName());
+            createCache(cm, sn.isi.myschool.domain.Tuteurs.class.getName() + ".eleves");
+            createCache(cm, sn.isi.myschool.domain.Salle.class.getName());
+            createCache(cm, sn.isi.myschool.domain.Salle.class.getName() + ".niveaus");
+            createCache(cm, sn.isi.myschool.domain.Niveau.class.getName());
+            createCache(cm, sn.isi.myschool.domain.Niveau.class.getName() + ".enseignants");
+            createCache(cm, sn.isi.myschool.domain.Inscription.class.getName());
+            createCache(cm, sn.isi.myschool.domain.Absence.class.getName());
+            createCache(cm, sn.isi.myschool.domain.Enseignant.class.getName());
+            createCache(cm, sn.isi.myschool.domain.Enseignant.class.getName() + ".niveaus");
             // jhipster-needle-ehcache-add-entry
         };
     }

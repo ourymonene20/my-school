@@ -1,0 +1,28 @@
+{
+  "myschoolApp": {
+    "eleve": {
+      "home": {
+        "title": "Eleves",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Eleve",
+        "createOrEditLabel": "Créer ou éditer un Eleve",
+        "notFound": "Aucun Eleve trouvé"
+      },
+      "created": "Un nouveau Eleve a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Eleve avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Eleve avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Eleve {{ id }} ?"
+      },
+      "detail": {
+        "title": "Eleve"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "prenom": "Prenom",
+      "email": "Email",
+      "dateNaiss": "Date Naiss",
+      "tuteur": "Tuteur"
+    }
+  }
+}

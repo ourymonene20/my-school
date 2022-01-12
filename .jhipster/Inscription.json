@@ -1,0 +1,38 @@
+{
+  "name": "Inscription",
+  "fields": [
+    {
+      "fieldName": "dateInscprion",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "anneeScolaire",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "eleve",
+      "otherEntityRelationshipName": "inscription",
+      "relationshipName": "eleve",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "niveau",
+      "otherEntityRelationshipName": "inscription",
+      "relationshipName": "niveau"
+    }
+  ],
+  "entityTableName": "inscription",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220106123115"
+}

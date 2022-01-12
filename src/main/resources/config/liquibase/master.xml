@@ -15,7 +15,19 @@
     <property name="datetimeType" value="datetime" dbms="oracle, mssql, postgresql, h2"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220106123111_added_entity_Eleve.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220106123112_added_entity_Tuteurs.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220106123113_added_entity_Salle.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220106123114_added_entity_Niveau.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220106123115_added_entity_Inscription.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220106123116_added_entity_Absence.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220106123117_added_entity_Enseignant.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20220106123111_added_entity_constraints_Eleve.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220106123114_added_entity_constraints_Niveau.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220106123115_added_entity_constraints_Inscription.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220106123116_added_entity_constraints_Absence.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220106123117_added_entity_constraints_Enseignant.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

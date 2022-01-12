@@ -88,6 +88,7 @@
     "@ngx-translate/http-loader": "7.0.0",
     "bootstrap": "4.6.1",
     "dayjs": "1.10.7",
+    "jhipster": "^0.0.2",
     "ngx-cookie-service": "13.1.2",
     "ngx-infinite-scroll": "10.0.1",
     "ngx-webstorage": "9.0.0",

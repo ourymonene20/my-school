@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-inscription-heading"
+        data-cy="InscriptionCreateUpdateHeading"
+        jhiTranslate="myschoolApp.inscription.home.createOrEditLabel"
+      >
+        Create or edit a Inscription
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myschoolApp.inscription.dateInscprion" for="field_dateInscprion"
+            >Date Inscprion</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dateInscprion"
+              data-cy="dateInscprion"
+              type="datetime-local"
+              class="form-control"
+              name="dateInscprion"
+              formControlName="dateInscprion"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myschoolApp.inscription.anneeScolaire" for="field_anneeScolaire"
+            >Annee Scolaire</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_anneeScolaire"
+              data-cy="anneeScolaire"
+              type="datetime-local"
+              class="form-control"
+              name="anneeScolaire"
+              formControlName="anneeScolaire"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myschoolApp.inscription.eleve" for="field_eleve">Eleve</label>
+          <select class="form-control" id="field_eleve" data-cy="eleve" name="eleve" formControlName="eleve">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="eleveOption.id === editForm.get('eleve')!.value?.id ? editForm.get('eleve')!.value : eleveOption"
+              *ngFor="let eleveOption of elevesCollection; trackBy: trackEleveById"
+            >
+              {{ eleveOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myschoolApp.inscription.niveau" for="field_niveau">Niveau</label>
+          <select class="form-control" id="field_niveau" data-cy="niveau" name="niveau" formControlName="niveau">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="niveauOption.id === editForm.get('niveau')!.value?.id ? editForm.get('niveau')!.value : niveauOption"
+              *ngFor="let niveauOption of niveausSharedCollection; trackBy: trackNiveauById"
+            >
+              {{ niveauOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

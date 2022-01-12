@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="niveau">
+      <h2 data-cy="niveauDetailsHeading"><span jhiTranslate="myschoolApp.niveau.detail.title">Niveau</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ niveau.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.niveau.nom">Nom</span></dt>
+        <dd>
+          <span>{{ niveau.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.niveau.libelle">Libelle</span></dt>
+        <dd>
+          <span>{{ niveau.libelle }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.niveau.salle">Salle</span></dt>
+        <dd>
+          <div *ngIf="niveau.salle">
+            <a [routerLink]="['/salle', niveau.salle?.id, 'view']">{{ niveau.salle?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/niveau', niveau.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

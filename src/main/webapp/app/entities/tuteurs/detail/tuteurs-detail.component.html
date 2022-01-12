@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tuteurs">
+      <h2 data-cy="tuteursDetailsHeading"><span jhiTranslate="myschoolApp.tuteurs.detail.title">Tuteurs</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tuteurs.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.tuteurs.nom">Nom</span></dt>
+        <dd>
+          <span>{{ tuteurs.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.tuteurs.prenom">Prenom</span></dt>
+        <dd>
+          <span>{{ tuteurs.prenom }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.tuteurs.telephone">Telephone</span></dt>
+        <dd>
+          <span>{{ tuteurs.telephone }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.tuteurs.email">Email</span></dt>
+        <dd>
+          <span>{{ tuteurs.email }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tuteurs', tuteurs.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+
+entity Eleve {
+	nom String,
+    prenom String,
+    email String,
+    dateNaiss Instant
+}
+
+entity Tuteurs{
+	nom String,
+    prenom String,
+    telephone String required,
+    email String
+}
+
+entity Salle {
+	libelle String,
+    capacite Integer
+}
+// an ignored comment
+/** not an ignored comment */
+entity Niveau {
+	nom String,
+	libelle String,
+	
+}
+
+entity Inscription {
+	dateInscprion Instant,
+    anneeScolaire Instant
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Absence {
+	dateAbsence Instant
+}
+
+entity Enseignant {
+	nom String,
+    prenom String,
+    email String,
+    dateNaiss Instant
+}
+
+
+relationship ManyToMany {
+	Enseignant{niveau} to Niveau{enseignant}
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Tuteurs{eleves} to Eleve{tuteur},
+    Salle{niveau} to Niveau
+    
+	
+	
+}
+
+relationship ManyToOne {
+    Inscription{niveau} to Niveau,
+    Absence{eleve} to Eleve
+}
+
+// defining multiple oneToOne relationships
+relationship OneToOne {
+	Inscription{eleve} to Eleve,
+
+}
+
+// Set pagination options
+paginate Inscription, Absence, Salle with infinite-scroll
+paginate Niveau, Eleve, Enseignant, Tuteurs with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Absence
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

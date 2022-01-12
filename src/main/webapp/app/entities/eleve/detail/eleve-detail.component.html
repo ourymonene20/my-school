@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="eleve">
+      <h2 data-cy="eleveDetailsHeading"><span jhiTranslate="myschoolApp.eleve.detail.title">Eleve</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ eleve.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.eleve.nom">Nom</span></dt>
+        <dd>
+          <span>{{ eleve.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.eleve.prenom">Prenom</span></dt>
+        <dd>
+          <span>{{ eleve.prenom }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.eleve.email">Email</span></dt>
+        <dd>
+          <span>{{ eleve.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.eleve.dateNaiss">Date Naiss</span></dt>
+        <dd>
+          <span>{{ eleve.dateNaiss | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="myschoolApp.eleve.tuteur">Tuteur</span></dt>
+        <dd>
+          <div *ngIf="eleve.tuteur">
+            <a [routerLink]="['/tuteurs', eleve.tuteur?.id, 'view']">{{ eleve.tuteur?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/eleve', eleve.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
